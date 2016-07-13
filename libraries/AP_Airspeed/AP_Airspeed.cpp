@@ -65,7 +65,7 @@ extern const AP_HAL::HAL &hal;
          #define ARSPD_DEFAULT_PIN AP_AIRSPEED_I2C_PIN
     #endif
     #if CONFIG_HAL_BOARD_SUBTYPE == HAL_BOARD_SUBTYPE_LINUX_DISCO
-         #define PSI_RANGE_DEFAULT 0.144509f // 4 inches H2O for M4515DO
+         #define PSI_RANGE_DEFAULT 0.05
     #endif
 #else
  #define ARSPD_DEFAULT_PIN 0
