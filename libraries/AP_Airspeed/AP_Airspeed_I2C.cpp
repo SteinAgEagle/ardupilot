@@ -48,7 +48,7 @@ bool AP_Airspeed_I2C::init()
     _dev = hal.i2c_mgr->get_device(MS4525D0_I2C_BUS, MS4525D0_I2C_ADDR);
 
     // take i2c bus sempahore
-    if (!_dev || _dev->get_semaphore()->take(200)) {
+    if (!_dev || !_dev->get_semaphore()->take(200)) {
         return false;
     }
 
@@ -80,7 +80,7 @@ void AP_Airspeed_I2C::_collect()
 
     _measurement_started_ms = 0;
 
-    if (_dev->transfer(nullptr, 0, data, sizeof(data))) {
+    if (!_dev->read_registers(0, data, sizeof(data))) {
         return;
     }
 
